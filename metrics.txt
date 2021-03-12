@@ -1,0 +1,2 @@
+istio_requests_total
+istio_request_duration_milliseconds_sum

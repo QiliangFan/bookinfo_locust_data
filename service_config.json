@@ -1,0 +1,12 @@
+[
+    "productpage",
+    "details",
+    "ratings",
+    {
+        "reviews": [
+            "v1",
+            "v2",
+            "v3"
+        ]
+    }
+]
