@@ -27,7 +27,7 @@ def process_node_exporter_data():
     for line in NODE_METRICS:
         line = line.strip()
         metric_name, query = line.split(" ")
-        vals = query_node(CONFIG["host"], query, CONFIG["span"])
+        vals = query_node(CONFIG["host"], query, CONFIG["span"], ts=CONFIG["ts"])
         node_data = NodeData(metric_name, vals)
         node_data.save(save_path)
         node_data.plot(img_path, interval=interval)
@@ -40,8 +40,8 @@ def process_node_exporter_data_cum():
     for line in NODE_METRICS_CUM:
         line = line.strip()
         metric_name, query1, query2 = line.split(" ")
-        val1 = query_node(CONFIG["host"], query1, CONFIG["span"])
-        val2 = query_node(CONFIG["host"], query2, CONFIG["span"])
+        val1 = query_node(CONFIG["host"], query1, CONFIG["span"], ts=CONFIG["ts"])
+        val2 = query_node(CONFIG["host"], query2, CONFIG["span"], ts=CONFIG["ts"])
         node_data_cum = NodeDataCum(metric_name, val1, val2)
         node_data_cum.make_delta()
         node_data_cum.div()

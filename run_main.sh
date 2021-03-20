@@ -16,7 +16,7 @@ fi
 SPAN=4h
 interval=1
 # ts=$(date +%s)
-ts=1615453200
+ts=1616169600
 
 for code in `cat status_code.txt`
 do
