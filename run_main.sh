@@ -18,7 +18,11 @@ interval=24
 # SPAN=4h
 # interval=1
 # ts=$(date +%s)
+<<<<<<< HEAD
 ts=1617465600
+=======
+ts=1616169600
+>>>>>>> 04ac5bea80fd7af418e71edfdfbfcbc74104ceec
 
 for code in `cat status_code.txt`
 do

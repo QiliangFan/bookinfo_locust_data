@@ -57,7 +57,7 @@ def main():
                 v = 0
                 ts = 0
                 for val in vals:
-                    v += eval(val[1]) if abs(eval(val[1])) < 1e6 else 0
+                    v += eval(val[1])
                     ts = int(val[0])
                 result.append([ts, v])
             

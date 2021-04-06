@@ -31,6 +31,7 @@ def process_node_exporter_data():
     if not os.path.exists(img_path):
         os.makedirs(img_path)
     for line in NODE_METRICS:
+<<<<<<< HEAD
         try:
             line = line.strip()
             metric_name, query = line.split(" ")
@@ -42,6 +43,14 @@ def process_node_exporter_data():
         except:
             traceback.print_exc()
 
+=======
+        line = line.strip()
+        metric_name, query = line.split(" ")
+        vals = query_node(CONFIG["host"], query, CONFIG["span"], ts=CONFIG["ts"])
+        node_data = NodeData(metric_name, vals)
+        node_data.save(save_path)
+        node_data.plot(img_path, interval=interval)
+>>>>>>> 04ac5bea80fd7af418e71edfdfbfcbc74104ceec
 
 def process_node_exporter_data_cum():
     save_path = os.path.join(PROJECT_PATH, "data", "system_metrics")
@@ -51,6 +60,7 @@ def process_node_exporter_data_cum():
     if not os.path.exists(img_path):
         os.makedirs(img_path)
     for line in NODE_METRICS_CUM:
+<<<<<<< HEAD
         try:
             line = line.strip()
             metric_name, query1, query2 = line.split(" ")
@@ -65,6 +75,17 @@ def process_node_exporter_data_cum():
             node_data_cum.plot(img_path, interval=interval)
         except:
             traceback.print_exc()
+=======
+        line = line.strip()
+        metric_name, query1, query2 = line.split(" ")
+        val1 = query_node(CONFIG["host"], query1, CONFIG["span"], ts=CONFIG["ts"])
+        val2 = query_node(CONFIG["host"], query2, CONFIG["span"], ts=CONFIG["ts"])
+        node_data_cum = NodeDataCum(metric_name, val1, val2)
+        node_data_cum.make_delta()
+        node_data_cum.div()
+        node_data_cum.save(save_path)
+        node_data_cum.plot(img_path, interval=interval)
+>>>>>>> 04ac5bea80fd7af418e71edfdfbfcbc74104ceec
 
 
 def main():
