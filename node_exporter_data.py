@@ -22,9 +22,10 @@ def sequence_add(seq1, seq2):
     result = [[k, v] for k, v in result.items()]
     return result
 
-def query_node(host, metric, span):
+def query_node(host, metric, span, ts):
     res = get(f"{host}/api/v1/query", params={
-        "query": f"{metric}[{span}]"
+        "query": f"{metric}[{span}]",
+        "time": f"{ts}"
     }).json()
     print(res.keys(), f"({metric})[{span}]")
     data = res["data"]["result"]

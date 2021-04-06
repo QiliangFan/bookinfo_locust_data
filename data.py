@@ -100,7 +100,7 @@ class IstioData(Istio):
             data = self.query()
             result = []
             for i in range(len(list(zip(self.data, data)))):
-                result.append([self.data[i][0], self.data[i][1]/(data[i][1] + 1e-6)])
+                result.append([self.data[i][0], self.data[i][1]/(data[i][1])])
             self.data = result
             self.metric = metric
         if len(self.data) > 0:

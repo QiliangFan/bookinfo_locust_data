@@ -13,10 +13,12 @@ then
 rm $cur_dir/img/* -rf
 fi
 
-SPAN=4h
-interval=1
+SPAN=$(((5*24)))h
+interval=24
+# SPAN=4h
+# interval=1
 # ts=$(date +%s)
-ts=1615453200
+ts=1617465600
 
 for code in `cat status_code.txt`
 do
